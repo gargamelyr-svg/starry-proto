@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dhhuhmvdh2u50"]
+
+[ext_resource type="Script" uid="uid://bhjwqwdbeat54" path="res://static_body_3d.gd" id="1_twre2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1ss65"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ss65"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ss65"]
+radius = 2.0
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=513705578]
+script = ExtResource("1_twre2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=904545679]
+mesh = SubResource("BoxMesh_1ss65")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1250565876]
+shape = SubResource("BoxShape3D_1ss65")
+
+[node name="NPC" type="Node3D" parent="." unique_id=1466195521]
+
+[node name="Area3D" type="Area3D" parent="NPC" unique_id=2140369618]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC/Area3D" unique_id=70941095]
+shape = SubResource("SphereShape3D_1ss65")
+
+[connection signal="body_entered" from="NPC/Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="NPC/Area3D" to="." method="_on_area_3d_body_exited"]

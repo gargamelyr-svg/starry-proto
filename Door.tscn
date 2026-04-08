@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://7pec7qbdlg06"]
+
+[ext_resource type="Script" uid="uid://bmii0vthk08ma" path="res://door.gd" id="1_1vvux"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6xaln"]
+size = Vector3(1.2874146, 2.217743, 0.24267578)
+
+[node name="Door" type="Node3D" unique_id=357815945]
+script = ExtResource("1_1vvux")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=2050610509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3515625, 0.6060791, -0.39111328)
+size = Vector3(0.296875, 2.2121582, 0.21777344)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1477341426]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.606, -0.391)
+size = Vector3(0.296875, 2.2121582, 0.21777344)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1557603536]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 3.821371e-15, 4.371139e-08, -1, 1, -4.371139e-08, 1.9106855e-15, 0.42280984, 1.82, -0.39063978)
+size = Vector3(0.22128296, 1.8481369, 0.21777344)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=514538951]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=466169586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4291687, 0.60887146, -0.3786621)
+shape = SubResource("BoxShape3D_6xaln")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
